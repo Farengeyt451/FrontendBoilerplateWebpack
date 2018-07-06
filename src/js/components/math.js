@@ -1,9 +1,9 @@
 export function square(x) {
-	console.log('Log from math.js' + x);
+	console.log('I get called from math.js!');
 	return x * x;
 }
 
 export function cube(x) {
-	console.log('Log from math.js' + x);
+	console.log('I get called from math.js!');
 	return x * x * x;
 }

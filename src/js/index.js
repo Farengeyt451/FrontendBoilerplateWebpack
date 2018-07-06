@@ -1,4 +1,5 @@
-import { square } from './math.js';
+// import $ from 'jquery';
+import {square} from './components/math.js';
 
 function component() {
 	var element = document.createElement('pre');

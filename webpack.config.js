@@ -6,7 +6,7 @@ const PATH = {
 };
 
 module.exports = {
-	entry: path.join(PATH.source, '/index.js'),
+	entry: path.join(PATH.source, '/js/index.js'),
 	output: {
 		path: PATH.build,
 		filename: '[name].js',
