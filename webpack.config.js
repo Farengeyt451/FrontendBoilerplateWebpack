@@ -1,47 +1,37 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const PATH = {
+	source: path.resolve(__dirname, 'src'),
+	build: path.resolve(__dirname, 'build')
+};
 
 module.exports = {
-  entry: {
-    app: './src/index.js'
-  },
-  plugins: [
-    new CleanWebpackPlugin(['dist']),
-    new HtmlWebpackPlugin({
-      title: 'Output Management'
-    })
-  ],
-  devtool: 'inline-source-map',
-  devServer: {
-    contentBase: './dist'
-  },
-  mode: "production",
-  output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
-  },
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
-      },
-      {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          'file-loader'
-        ]
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: [
-          'file-loader'
-        ]
-      }
-    ]
-  }
+	entry: path.join(PATH.source, '/js/index.js'),
+	output: {
+		path: PATH.build,
+		filename: '[name].js',
+		publicPath: '/'
+	},
+	mode: 'development',
+	devtool: 'eval-source-map',
+	devServer: {
+		contentBase: path.join(__dirname, 'dist'),
+		compress: true,
+		port: 9000
+	},
+	module: {
+		rules: [
+			{
+				test: /\.pug$/,
+				loader: 'pug-loader',
+				options: {
+				pretty: true}
+			}
+		]
+	},
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: path.join(PATH.source, '/index.pug')
+		})
+	]
 };
