@@ -3,16 +3,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 // const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-const dirSource = path.resolve(__dirname, 'src');
-const dirBuild = path.resolve(__dirname, 'build');
-const dirNode = path.resolve(__dirname, 'node_modules');
-
 const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
 
-module.exports = {
-	entry: path.join(dirSource, '/js/index.js'),
+const paths= {
+	dirSource: path.resolve(__dirname, 'src'),
+	dirBuild: path.resolve(__dirname, 'build'),
+	dirNode: path.resolve(__dirname, 'node_modules')
+}
+
+const commonConfig = {
+	entry: path.join(paths.dirSource, '/js/index.js'),
 	output: {
-		path: dirBuild,
+		path: paths.dirBuild,
 		filename: '[name].js',
 		publicPath: '/',
 		pathinfo: true
@@ -41,7 +43,7 @@ module.exports = {
 	plugins: [
 		// new CleanWebpackPlugin(dirBuild),
 		new HtmlWebpackPlugin({
-			template: path.join(dirSource, '/index.pug')
+			template: path.join(paths.dirSource, '/index.pug')
 		})
 		// new BrowserSyncPlugin({
 		// 		host: 'localhost',
@@ -55,3 +57,8 @@ module.exports = {
 		// ),
 	],
 };
+
+module.exports = {
+	paths: paths,
+	commonConfig: commonConfig
+}

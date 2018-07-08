@@ -2,7 +2,7 @@ const merge = require('webpack-merge');
 const webpackConfig = require('./webpack.config');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
-module.exports = merge(webpackConfig, {
+module.exports = merge(webpackConfig.commonConfig, {
 
 	mode: 'development',
 	devtool: 'eval-dirSource-map',
@@ -10,7 +10,7 @@ module.exports = merge(webpackConfig, {
 	devServer: {
 		host: '0.0.0.0',
 		port: 8080,
-		contentBase: './build',
+		contentBase: webpackConfig.paths.dirBuild,
 		overlay: true,
 		compress: true,
 		open: false
