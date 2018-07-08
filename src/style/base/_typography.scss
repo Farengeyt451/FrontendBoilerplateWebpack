@@ -1,0 +1,7 @@
+// Import mixin for fonts
+@import '../mixins/font-face';
+
+// Plugin fonts
+@include font-face('Roboto', '../fonts/RobotoRegular/RobotoRegular');
+@include font-face('Roboto', '../fonts/RobotoBold/RobotoBold', 700);
+@include font-face('Roboto', '../fonts/RobotoLight/RobotoLight', 300);

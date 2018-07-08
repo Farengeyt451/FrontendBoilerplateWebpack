@@ -1,0 +1,19 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	position: relative;
+	background-color: $white;
+	min-width: 320px;
+	font-family: 'Roboto', sans-serif;
+}
+
+input,
+select,
+textarea,
+button {
+	font-family: inherit;
+}

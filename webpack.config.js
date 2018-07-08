@@ -1,14 +1,14 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-// const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
 
 const paths= {
 	dirSource: path.resolve(__dirname, 'src'),
 	dirBuild: path.resolve(__dirname, 'build'),
-	dirNode: path.resolve(__dirname, 'node_modules')
+	dirNode: path.resolve(__dirname, 'node_modules'),
+	entyPug: 'index.pug',
+	entyHTML: 'index.html'
 }
 
 const commonConfig = {
@@ -19,18 +19,17 @@ const commonConfig = {
 		publicPath: '/',
 		pathinfo: true
 	},
-	// mode: 'development',
-	// devtool: 'eval-dirSource-map',
-	// devServer: {
-	// 	host: '0.0.0.0',
-	// 	port: 8080,
-	// 	contentBase: './build',
-	// 	overlay: true,
-	// 	compress: true,
-	// 	open: false
-	// },
 	module: {
 		rules: [
+			{
+				test: /\.html$/,
+				use: [{
+					loader: 'html-loader',
+					options: {
+						minimize: true
+					}
+				}],
+			},
 			{
 				test: /\.pug$/,
 				loader: 'pug-loader',
@@ -41,20 +40,9 @@ const commonConfig = {
 		]
 	},
 	plugins: [
-		// new CleanWebpackPlugin(dirBuild),
 		new HtmlWebpackPlugin({
-			template: path.join(paths.dirSource, '/index.pug')
+			template: path.join(paths.dirSource, paths.entyPug)
 		})
-		// new BrowserSyncPlugin({
-		// 		host: 'localhost',
-		// 		port: 3000,
-		// 		proxy: 'http://localhost:8080/',
-		// 		open: false
-		// 	},
-		// 	{
-		// 		reload: false
-		// 	}
-		// ),
 	],
 };
 

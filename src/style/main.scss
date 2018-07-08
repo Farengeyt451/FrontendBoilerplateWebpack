@@ -1,0 +1,30 @@
+// @import
+// 	'vendors/normalize',
+// 	'vendors/bootstrap-4-grid';
+
+@import
+	'utils/variables',
+	'utils/functions',
+	'utils/mixins';
+
+@import
+	'base/reset',
+	'base/base';
+	// 'base/typography';
+
+// @import
+// 	'layouts/general',
+// 	'layouts/navigation',
+// 	'layouts/header',
+// 	'layouts/content',
+// 	'layouts/footer';
+
+// @import
+// 	'modules/buttons',
+// 	'modules/carousel';
+
+// @import
+// 	'media/media-queries';
+.heading {
+	color: brown;
+}
