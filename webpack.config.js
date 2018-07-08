@@ -3,20 +3,21 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-const appPaths = {
-	source: path.resolve(__dirname, 'src'),
-	build: path.resolve(__dirname, 'build'),
-};
+const dirSource = path.resolve(__dirname, 'src');
+const dirBuild = path.resolve(__dirname, 'build');
+const dirNode = 'node_modules';
+
+const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
 
 module.exports = {
-	entry: path.join(appPaths.source, '/js/index.js'),
+	entry: path.join(dirSource, '/js/index.js'),
 	output: {
-		path: appPaths.build,
+		path: dirBuild,
 		filename: '[name].js',
 		publicPath: '/'
 	},
 	mode: 'development',
-	devtool: 'eval-source-map',
+	devtool: 'eval-dirSource-map',
 	devServer: {
 		host: '0.0.0.0',
 		port: 8080,
@@ -37,9 +38,9 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new CleanWebpackPlugin(['build']),
+		new CleanWebpackPlugin(dirBuild),
 		new HtmlWebpackPlugin({
-			template: path.join(appPaths.source, '/index.pug')
+			template: path.join(dirSource, '/index.pug')
 		}),
 		new BrowserSyncPlugin({
 				host: 'localhost',
