@@ -6,7 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = merge(webpackConfig.commonConfig, {
 
 	mode: 'development',
-	devtool: 'inline-source-map',
+	devtool: 'eval-source-map',
 
 	devServer: {
 		host: '0.0.0.0',
@@ -21,35 +21,35 @@ module.exports = merge(webpackConfig.commonConfig, {
 		rules: [
 			{
 				test: [/\.scss$/i, /\.sass$/i, /\.css$/],
-				use: ExtractTextPlugin.extract({
-					fallback: 'style-loader',
-					use: [
-						{
-							loader: 'css-loader',
-							options: {
-								sourceMap: true
-							}
-						},
-						{
-							loader: 'postcss-loader',
-							options: {
-								ident: 'postcss',
-								plugins: [
-									autoprefixer({
-										browsers:['ie >= 8', 'last 4 version']
-										})
-								],
-								sourceMap: true
-							}
-						},
-						{
-							loader: 'sass-loader',
-							options: {
-								sourceMap: true
-							}
+				use: [
+					{
+						loader: 'style-loader'
+					},
+					{
+						loader: 'css-loader',
+						options: {
+							sourceMap: true
 						}
-					]
-				})
+					},
+					{
+						loader: 'postcss-loader',
+						options: {
+							ident: 'postcss',
+							plugins: [
+								autoprefixer({
+									browsers:['ie >= 8', 'last 4 version']
+									})
+							],
+							sourceMap: true
+						}
+					},
+					{
+						loader: 'sass-loader',
+						options: {
+							sourceMap: true
+						}
+					}
+				]
 			}
 		]
 	},
