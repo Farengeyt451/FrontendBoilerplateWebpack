@@ -16,7 +16,7 @@ const commonConfig = {
 	entry: path.join(paths.dirSource, '/js/index.js'),
 	output: {
 		path: paths.dirBuild,
-		filename: '[name].js',
+		filename: 'js/[name].js',
 		// publicPath: '/',
 		pathinfo: true
 	},
@@ -49,7 +49,7 @@ const commonConfig = {
 		new HtmlWebpackPlugin({
 			template: path.join(paths.dirSource, paths.entyPug)
 		}),
-		new ExtractTextPlugin('style.css')
+		new ExtractTextPlugin('css/style.css')
 	],
 };
 

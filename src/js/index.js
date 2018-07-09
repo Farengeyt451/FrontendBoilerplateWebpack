@@ -3,7 +3,8 @@ import {square} from './components/math.js';
 import printMe from './components/print.js';
 
 import '../style/main.scss';
-// import '../style/style.css';
+import '../style/style.css';
+import 'normalize.css';
 
 function component() {
 	var element = document.createElement('pre');
