@@ -2,6 +2,9 @@
 import {square} from './components/math.js';
 import printMe from './components/print.js';
 
+import '../style/main.scss';
+// import '../style/style.css';
+
 function component() {
 	var element = document.createElement('pre');
 	element.innerHTML = [
