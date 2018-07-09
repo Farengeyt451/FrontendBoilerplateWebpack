@@ -2,9 +2,9 @@
 import {square} from './components/math.js';
 import printMe from './components/print.js';
 
+import 'normalize.css';
 import '../style/main.scss';
 import '../style/style.css';
-import 'normalize.css';
 
 function component() {
 	var element = document.createElement('pre');
@@ -20,6 +20,9 @@ function sum(...nums) {
 }
 
 printMe();
+
+console.log($);
+console.log(jQuery);
 
 console.log(`I get called from index.js! ${sum(1, 4, 5, -20, -1, 0)}`);
 

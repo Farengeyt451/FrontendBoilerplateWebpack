@@ -1,9 +1,9 @@
 const merge = require('webpack-merge');
-const path = require('path');
-const webpackConfig = require('./webpack.config');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpackConfig = require('./webpack.config');
+
 module.exports = merge(webpackConfig.commonConfig, {
 
 	mode: 'production',

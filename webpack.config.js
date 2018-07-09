@@ -1,4 +1,7 @@
 const path = require('path');
+const webpack = require('webpack');
+
+const WebpackMessages = require('webpack-messages');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -20,6 +23,7 @@ const commonConfig = {
 		// publicPath: '/',
 		pathinfo: true
 	},
+
 	module: {
 		rules: [
 			{
@@ -45,11 +49,20 @@ const commonConfig = {
 			}
 		]
 	},
+
 	plugins: [
+		new WebpackMessages({
+			name: 'client',
+			logger: str => console.log(`>> ${str}`)
+		}),
 		new HtmlWebpackPlugin({
 			template: path.join(paths.dirSource, paths.entyPug)
 		}),
-		new ExtractTextPlugin('css/style.css')
+		new ExtractTextPlugin('css/[name].css'),
+		new webpack.ProvidePlugin({
+			$: 'jquery',
+			jQuery: 'jquery'
+		})
 	],
 };
 
