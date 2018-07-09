@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
 const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
 
@@ -48,35 +49,35 @@ const commonConfig = {
 				test: [/\.scss$/i, /\.sass$/i, /\.css$/],
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
-					use: ['css-loader', 'postcss-loader', 'sass-loader']
+					use: [
+						{
+							loader: 'css-loader',
+							options: {
+								sourceMap: true
+							}
+						},
+						{
+							loader: 'postcss-loader',
+							options: {
+								ident: 'postcss',
+								plugins: [
+									autoprefixer({
+										browsers:['ie >= 8', 'last 4 version']
+										})
+								],
+								sourceMap: true
+							}
+						},
+						{
+							loader: 'sass-loader',
+							options: {
+								sourceMap: true
+							}
+						}
+					]
 				})
-			},
-			// {
-			// 	test: /\.scss$/,
-			// 	use: ExtractTextPlugin.extract({
-			// 	fallback: 'style-loader',
-			// 	use:
-			// 	[{
-			// 		loader: 'css-loader',
-			// 		options: {
-			// 			sourceMap: true
-			// 		}
-			// 	},
-			// 	{
-			// 		loader: 'sass-loader',
-			// 		options: {
-			// 				sourceMap: true,
-			// 		}
-			// 	}]
-			// 	})
-			// },
-			// {
-			// 	test: /\.css$/,
-			// 	use: ExtractTextPlugin.extract({
-			// 	fallback: 'style-loader',
-			// 	use: 'css-loader'
-			// 	})
-			// }
+			}
+
 		]
 	},
 	plugins: [

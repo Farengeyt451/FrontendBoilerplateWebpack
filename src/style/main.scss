@@ -26,6 +26,12 @@
 // @import
 // 	'media/media-queries';
 
+.wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .heading {
 	color: brown;
 	display: flex;
