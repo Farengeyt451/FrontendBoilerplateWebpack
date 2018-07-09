@@ -46,7 +46,17 @@ const commonConfig = {
 				options: {
 					pretty: true
 				}
-			}
+			},
+			{
+				test: /\.(ttf|eot|woff|woff2)$/,
+				use: {
+					loader: "file-loader",
+					options: {
+						name: "fonts/[name].[ext]",
+						publicPath: paths.dirSource
+					},
+				},
+			},
 		]
 	},
 
