@@ -1,39 +1,22 @@
-// @import
-// 	'utils/variables',
-// 	'utils/functions',
-// 	'utils/mixins';
+@import
+	'utils/variables',
+	'utils/functions';
 
-// @import
-// 	'base/reset',
-// 	'base/base',
-// 'base/typography';
+@import
+	'base/reset',
+	'base/base',
+	'base/typography';
 
-// @import
-// 	'layouts/general',
-// 	'layouts/navigation',
-// 	'layouts/header',
-// 	'layouts/content',
-// 	'layouts/footer';
+@import
+	'layouts/general',
+	'layouts/navigation',
+	'layouts/header',
+	'layouts/content',
+	'layouts/footer';
 
-// @import
-// 	'modules/buttons',
-// 	'modules/carousel';
+@import
+	'modules/buttons',
+	'modules/carousel';
 
-// @import
-// 	'media/media-queries';
-
-.wrapper {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.heading {
-	color: brown;
-	display: flex;
-	font-family: 'Roboto';
-	display: block;
-	width: 200px;
-	height: 200px;
-	background-image: url('../img/boilerplate.jpg');
-}
+@import
+	'media/media-queries';
