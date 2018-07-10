@@ -29,7 +29,8 @@ module.exports = merge(webpackConfig.commonConfig, {
 					{
 						loader: 'css-loader',
 						options: {
-							sourceMap: true
+							sourceMap: true,
+							url: false
 						}
 					},
 					{

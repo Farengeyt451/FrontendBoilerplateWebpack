@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const WebpackMessages = require('webpack-messages');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
 
@@ -46,17 +47,7 @@ const commonConfig = {
 				options: {
 					pretty: true
 				}
-			},
-			{
-				test: /\.(ttf|eot|woff|woff2)$/,
-				use: {
-					loader: "file-loader",
-					options: {
-						name: "fonts/[name].[ext]",
-						publicPath: paths.dirSource
-					},
-				},
-			},
+			}
 		]
 	},
 
@@ -72,8 +63,21 @@ const commonConfig = {
 		new webpack.ProvidePlugin({
 			$: 'jquery',
 			jQuery: 'jquery'
-		})
-	],
+		}),
+		new CopyWebpackPlugin([{
+				from: './src/fonts',
+				to: './fonts'
+			},
+			{
+				from: './src/img',
+				to: './img'
+			},
+			{
+				from: './src/uploads',
+				to: './uploads'
+			}
+		])
+	]
 };
 
 module.exports = {
